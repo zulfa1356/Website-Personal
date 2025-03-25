@@ -21,23 +21,35 @@
             </tr>
         </thead>
         <tbody id="anggota-tbody">
-            <!-- Data akan ditambahkan di sini -->
+            <!-- Data anggota akan dimuat di sini -->
         </tbody>
     </table>
 
     <!-- Navigasi Kembali -->
+    <br><br>
     <a href="registrasi.html">Kembali ke Formulir Registrasi</a>
 
     <script>
-        // Ambil data dari localStorage
-        const anggota = JSON.parse(localStorage.getItem('anggota')) || [];
+        // Data anggota bawaan
+        const defaultAnggota = [
+            { nama: "Andi Wijaya", email: "andi@mail.com", telepon: "08123456789", jenisKelamin: "Laki-laki" },
+            { nama: "Siti Rahma", email: "siti@mail.com", telepon: "08987654321", jenisKelamin: "Perempuan" },
+            { nama: "Budi Santoso", email: "budi@mail.com", telepon: "08223344556", jenisKelamin: "Laki-laki" }
+        ];
+
+        // Ambil data tambahan dari localStorage
+        const storedAnggota = JSON.parse(localStorage.getItem('anggota')) || [];
+
+        // Gabungkan data bawaan dengan data dari localStorage
+        const allAnggota = [...storedAnggota, ...defaultAnggota]; // Data terbaru muncul pertama
 
         // Referensi ke tbody
         const tbody = document.getElementById('anggota-tbody');
 
-        // Render data anggota ke tabel
-        anggota.forEach((item, index) => {
+        // Render semua data anggota ke tabel
+        allAnggota.forEach((item, index) => {
             const row = document.createElement('tr');
+            row.className = index % 2 === 0 ? 'warna-baris-ganjil' : 'warna-baris-genap';
             row.innerHTML = `
                 <td>${index + 1}</td>
                 <td>${item.nama}</td>
