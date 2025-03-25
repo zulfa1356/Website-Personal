@@ -1,0 +1,116 @@
+form {
+    background-color: #fffbe7; /* Latar belakang form kuning pastel */
+    padding: 20px;
+    max-width: 400px; 
+    margin: auto; 
+    border-radius: 8px; /* Sudut lebih melengkung untuk kesan modern */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+form h2 {
+    text-align: center; 
+    color: #ff6f61; /* Warna oranye cerah untuk judul */
+}
+
+form label {
+    font-size: 14px;
+    color: #333; 
+}
+
+form input, form textarea, form button {
+    width: 100%; 
+    margin-bottom: 15px; 
+    padding: 10px; 
+    border: 1px solid #ffb74d; /* Border elemen oranye pastel */
+    border-radius: 6px; /* Sudut lebih lembut */
+    font-size: 14px;
+}
+
+form button {
+    background-color: blue; 
+    color: white; 
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: darkblue; 
+}
+
+.radio-group {
+    display: flex; 
+    gap: 15px; 
+}
+
+.radio-group input[type=radio] {
+    accent-color: #ff6f61; /* Warna indikator radio oranye cerah */
+}
+
+.radio-group label {
+    font-size: 14px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fef6e4; /* Latar belakang halaman kuning pastel */
+    color: #4a4a4a; /* Warna teks abu-abu gelap */
+    margin: 0;
+    padding: 0;
+}
+
+h2 {
+    text-align: center; 
+    color: #ff6f61; /* Warna oranye cerah untuk judul */
+}
+
+table {
+    width: 80%; 
+    margin: 20px auto; 
+    border-collapse: collapse; 
+    background-color: #ffffff; /* Latar belakang tabel putih */
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+}
+
+table th, table td {
+    border: 1px solid #ffcc80; /* Border tabel oranye pastel */
+    padding: 10px; 
+    text-align: left; 
+}
+
+table th {
+    background-color: #ff6f61; /* Header tabel oranye cerah */
+    color: white; 
+    text-transform: uppercase; 
+}
+
+.warna-baris-ganjil {
+    background-color: #fff3e0; /* Warna baris ganjil krem pastel */
+}
+
+.warna-baris-genap {
+    background-color: #ffe0b2; /* Warna baris genap oranye pastel */
+}
+
+table tr:hover {
+    background-color: #ffcc80; /* Warna baris saat hover oranye terang */
+}
+
+a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #ff6f61; /* Link berwarna oranye cerah */
+    font-size: 16px;
+    margin: 20px auto;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #e65100; /* Warna oranye gelap saat hover */
+}
