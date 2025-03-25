@@ -20,34 +20,33 @@
                 <th>Jenis Kelamin</th>
             </tr>
         </thead>
-        <tbody>
-            <tr class="warna-baris-ganjil">
-                <td>1</td>
-                <td>Andi Wijaya</td>
-                <td>andi@mail.com</td>
-                <td>08123456789</td>
-                <td>Laki-laki</td>
-            </tr>
-            <tr class="warna-baris-genap">
-                <td>2</td>
-                <td>Siti Rahma</td>
-                <td>siti@mail.com</td>
-                <td>08987654321</td>
-                <td>Perempuan</td>
-            </tr>
-            <tr class="warna-baris-ganjil">
-                <td>3</td>
-                <td>Budi Santoso</td>
-                <td>budi@mail.com</td>
-                <td>08223344556</td>
-                <td>Laki-laki</td>
-            </tr>
+        <tbody id="anggota-tbody">
+            <!-- Data akan ditambahkan di sini -->
         </tbody>
     </table>
 
-    <!-- Tambahkan link kembali ke halaman registrasi -->
-    <br><br>
+    <!-- Navigasi Kembali -->
     <a href="registrasi.html">Kembali ke Formulir Registrasi</a>
 
+    <script>
+        // Ambil data dari localStorage
+        const anggota = JSON.parse(localStorage.getItem('anggota')) || [];
+
+        // Referensi ke tbody
+        const tbody = document.getElementById('anggota-tbody');
+
+        // Render data anggota ke tabel
+        anggota.forEach((item, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${item.nama}</td>
+                <td>${item.email}</td>
+                <td>${item.telepon}</td>
+                <td>${item.jenisKelamin}</td>
+            `;
+            tbody.appendChild(row);
+        });
+    </script>
 </body>
 </html>
