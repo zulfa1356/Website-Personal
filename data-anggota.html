@@ -9,7 +9,6 @@
 <body>
     <h2>Daftar Anggota Perpustakaan</h2>
 
-    <!-- Tabel Data Anggota -->
     <table>
         <thead>
             <tr>
@@ -20,34 +19,32 @@
                 <th>Jenis Kelamin</th>
             </tr>
         </thead>
-        <tbody id="data-anggota">
-            <!-- Data anggota akan dimuat di sini -->
+        <tbody>
+            <tr class="warna-baris-ganjil">
+                <td>1</td>
+                <td>Andi Wijaya</td>
+                <td>andi@mail.com</td>
+                <td>08123456789</td>
+                <td>Laki-laki</td>
+            </tr>
+            <tr class="warna-baris-genap">
+                <td>2</td>
+                <td>Siti Rahma</td>
+                <td>siti@mail.com</td>
+                <td>08987654321</td>
+                <td>Perempuan</td>
+            </tr>
+            <tr class="warna-baris-ganjil">
+                <td>3</td>
+                <td>Budi Santoso</td>
+                <td>budi@mail.com</td>
+                <td>08223344556</td>
+                <td>Laki-laki</td>
+            </tr>
         </tbody>
     </table>
 
     <br><br>
     <a href="registrasi.html">Kembali ke Formulir Registrasi</a>
-
-    <script>
-        // Ambil data anggota dari localStorage
-        const anggota = JSON.parse(localStorage.getItem("anggota")) || [];
-
-        // Ambil elemen tbody
-        const tbody = document.getElementById("data-anggota");
-
-        // Tambahkan data ke tabel
-        anggota.forEach((item, index) => {
-            const row = `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${item.nama}</td>
-                    <td>${item.email}</td>
-                    <td>${item.telepon}</td>
-                    <td>${item.jenisKelamin}</td>
-                </tr>
-            `;
-            tbody.innerHTML += row;
-        });
-    </script>
 </body>
 </html>
