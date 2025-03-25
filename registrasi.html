@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="anggota.html" method="post">
+    <form id="registrasiForm">
         <h2>Formulir Registrasi Anggota Perpustakaan</h2>
 
         <label for="nama">Nama Lengkap:</label><br>
@@ -20,16 +20,16 @@
         <input type="number" id="telepon" name="telepon" required><br><br>
 
         <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat" rows="4"></textarea><br><br>
+        <textarea id="alamat" name="alamat" rows="4" required></textarea><br><br>
 
         <label>Jenis Kelamin:</label><br>
-        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki">
+        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
         <label for="laki-laki">Laki-laki</label>
-        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
         <label for="perempuan">Perempuan</label><br><br>
 
         <label for="tanggal_lahir">Tanggal Lahir:</label><br>
-        <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br><br>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir" required><br><br>
 
         <label for="password">Buat Password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
@@ -39,5 +39,25 @@
 
         <button type="submit">Submit</button>
     </form>
+
+    <script>
+        document.getElementById('registrasiForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Ambil data dari form
+            const nama = document.getElementById('nama').value;
+            const email = document.getElementById('email').value;
+            const telepon = document.getElementById('telepon').value;
+            const jenisKelamin = document.querySelector('input[name="jenis_kelamin"]:checked').value;
+
+            // Simpan data di localStorage
+            const anggota = JSON.parse(localStorage.getItem('anggota')) || [];
+            anggota.push({ nama, email, telepon, jenisKelamin });
+            localStorage.setItem('anggota', JSON.stringify(anggota));
+
+            // Redirect ke halaman anggota.html
+            window.location.href = 'anggota.html';
+        });
+    </script>
 </body>
 </html>
