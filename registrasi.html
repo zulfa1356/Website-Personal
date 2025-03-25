@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form onsubmit="handleSubmit(event)">
-        <h2>Formulir Registrasi Anggota Perpustakaan</h2>
-
+    <h2>Formulir Registrasi Anggota Perpustakaan</h2>
+    <form id="form-registrasi">
         <label for="nama">Nama Lengkap:</label><br>
         <input type="text" id="nama" name="nama" required><br><br>
 
@@ -18,6 +17,9 @@
 
         <label for="telepon">Nomor Telepon:</label><br>
         <input type="number" id="telepon" name="telepon" required><br><br>
+
+        <label for="alamat">Alamat:</label><br>
+        <textarea id="alamat" name="alamat" rows="4"></textarea><br><br>
 
         <label>Jenis Kelamin:</label><br>
         <div class="radio-group">
@@ -28,31 +30,53 @@
         </div>
         <br>
 
+        <label for="tanggal_lahir">Tanggal Lahir:</label><br>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br><br>
+
+        <label for="password">Buat Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="ulangi_password">Ulangi Password:</label><br>
+        <input type="password" id="ulangi_password" name="ulangi_password" required><br><br>
+
         <button type="submit">Submit</button>
     </form>
 
     <script>
-        function handleSubmit(event) {
-            event.preventDefault();
+        // Ambil form
+        const form = document.getElementById('form-registrasi');
+
+        // Event listener untuk submit form
+        form.addEventListener('submit', function (event) {
+            event.preventDefault(); // Mencegah reload
 
             // Ambil data dari form
             const nama = document.getElementById('nama').value;
             const email = document.getElementById('email').value;
             const telepon = document.getElementById('telepon').value;
+            const alamat = document.getElementById('alamat').value;
             const jenisKelamin = document.querySelector('input[name="jenis_kelamin"]:checked').value;
+            const tanggalLahir = document.getElementById('tanggal_lahir').value;
 
-            // Ambil data lama dari localStorage
+            // Ambil data anggota dari localStorage
             const anggota = JSON.parse(localStorage.getItem('anggota')) || [];
 
             // Tambahkan data baru
-            anggota.push({ nama, email, telepon, jenisKelamin });
+            anggota.push({ nama, email, telepon, alamat, jenisKelamin, tanggalLahir });
 
             // Simpan kembali ke localStorage
             localStorage.setItem('anggota', JSON.stringify(anggota));
 
-            // Redirect ke halaman data anggota
-            window.location.href = 'data_anggota.html';
-        }
+            // Reset form
+            form.reset();
+
+            // Beri notifikasi
+            alert('Registrasi berhasil! Lihat daftar anggota.');
+
+            // Redirect ke halaman anggota
+            window.location.href = 'anggota.html';
+        });
     </script>
 </body>
 </html>
+
