@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Formulir Registrasi Anggota Perpustakaan</h2>
-    <form id="form-registrasi">
+    <form action="anggota.html" method="post">
+        <h2>Formulir Registrasi Anggota Perpustakaan</h2>
+
         <label for="nama">Nama Lengkap:</label><br>
         <input type="text" id="nama" name="nama" required><br><br>
 
@@ -16,46 +17,27 @@
         <input type="email" id="email" name="email" required><br><br>
 
         <label for="telepon">Nomor Telepon:</label><br>
-        <input type="text" id="telepon" name="telepon" required><br><br>
+        <input type="number" id="telepon" name="telepon" required><br><br>
 
         <label for="alamat">Alamat:</label><br>
         <textarea id="alamat" name="alamat" rows="4"></textarea><br><br>
 
         <label>Jenis Kelamin:</label><br>
-        <div class="radio-group">
-            <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
-            <label for="laki-laki">Laki-laki</label>
-            <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
-            <label for="perempuan">Perempuan</label>
-        </div>
-        <br>
+        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki">
+        <label for="laki-laki">Laki-laki</label>
+        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+        <label for="perempuan">Perempuan</label><br><br>
+
+        <label for="tanggal_lahir">Tanggal Lahir:</label><br>
+        <input type="date" id="tanggal_lahir" name="tanggal_lahir"><br><br>
+
+        <label for="password">Buat Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <label for="ulangi_password">Ulangi Password:</label><br>
+        <input type="password" id="ulangi_password" name="ulangi_password" required><br><br>
 
         <button type="submit">Submit</button>
     </form>
-
-    <script>
-        document.getElementById("form-registrasi").addEventListener("submit", function (event) {
-            event.preventDefault(); // Cegah pengiriman formulir default
-
-            // Ambil data dari form
-            const nama = document.getElementById("nama").value;
-            const email = document.getElementById("email").value;
-            const telepon = document.getElementById("telepon").value;
-            const jenisKelamin = document.querySelector('input[name="jenis_kelamin"]:checked').value;
-
-            // Ambil data anggota dari localStorage
-            const anggota = JSON.parse(localStorage.getItem("anggota")) || [];
-
-            // Tambahkan data baru
-            anggota.push({ nama, email, telepon, jenisKelamin });
-
-            // Simpan kembali ke localStorage
-            localStorage.setItem("anggota", JSON.stringify(anggota));
-
-            // Redirect ke halaman data anggota
-            window.location.href = "anggota.html";
-        });
-    </script>
 </body>
 </html>
-
