@@ -20,13 +20,13 @@
         <input type="number" id="telepon" name="telepon" required><br><br>
         
         <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat" rows="4"></textarea><br><br>
+        <textarea id="alamat" name="alamat" rows="4" required></textarea><br><br>
         
         <label>Jenis Kelamin:</label><br>
         <div class="radio-group">
             <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
             <label for="laki-laki">Laki-laki</label>
-            <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+            <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
             <label for="perempuan">Perempuan</label>
         </div>
         <br>
@@ -40,7 +40,7 @@
         <label for="ulangi_password">Ulangi Password:</label><br>
         <input type="password" id="ulangi_password" name="ulangi_password" required><br><br>
         
-        <button type="submit">Daftar</button>
+        <button type="submit">Submit</button>
     </form>
 
     <script>
@@ -59,7 +59,7 @@
 
             // Validasi password
             if (password !== ulangiPassword) {
-                alert('Password dan konfirmasi password tidak sesuai.');
+                alert('Password dan konfirmasi password tidak cocok.');
                 return;
             }
 
@@ -82,4 +82,3 @@
     </script>
 </body>
 </html>
-
