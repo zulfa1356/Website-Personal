@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Anggota Perpustakaan</title>
+    <title>Data Anggota</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>Daftar Anggota Perpustakaan</h2>
-    <table>
+    <table class="tabel-anggota">
         <thead>
             <tr>
                 <th>No</th>
@@ -16,38 +15,35 @@
                 <th>Email</th>
                 <th>Nomor Telepon</th>
                 <th>Jenis Kelamin</th>
-                <th>Tanggal Lahir</th>
             </tr>
         </thead>
-        <tbody id="data-anggota">
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Andi Wijaya</td>
+                <td>andi@mail.com</td>
+                <td>08123456789</td>
+                <td>Laki-laki</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Siti Rahma</td>
+                <td>siti@mail.com</td>
+                <td>08987654321</td>
+                <td>Perempuan</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Budi Santoso</td>
+                <td>budi@mail.com</td>
+                <td>08223344556</td>
+                <td>Laki-laki</td>
+            </tr>
         </tbody>
     </table>
-    <br>
-    <button id="kembali">Kembali ke Formulir Registrasi</button>
-
-    <script>
-        // Ambil data anggota dari localStorage
-        const dataAnggota = JSON.parse(localStorage.getItem('dataAnggota')) || [];
-        const tbody = document.getElementById('data-anggota');
-
-        // Tampilkan data dalam tabel
-        dataAnggota.forEach((anggota, index) => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${index + 1}</td>
-                <td>${anggota.nama}</td>
-                <td>${anggota.email}</td>
-                <td>${anggota.telepon}</td>
-                <td>${anggota.jenisKelamin}</td>
-                <td>${anggota.tanggalLahir}</td>
-            `;
-            tbody.appendChild(row);
-        });
-
-        // Tambahkan event listener untuk tombol kembali
-        document.getElementById('kembali').addEventListener('click', function () {
-            window.location.href = "registrasi.html";
-        });
-    </script>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <a href="registrasi.html" class="button-kembali">Kembali ke Registrasi</a>
+    </div>
 </body>
 </html>
