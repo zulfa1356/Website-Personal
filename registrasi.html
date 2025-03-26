@@ -7,57 +7,79 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="registrasiForm">
+    <form id="form-registrasi">
         <h2>Formulir Registrasi Anggota Perpustakaan</h2>
-
+        
         <label for="nama">Nama Lengkap:</label><br>
         <input type="text" id="nama" name="nama" required><br><br>
-
+        
         <label for="email">Email:</label><br>
         <input type="email" id="email" name="email" required><br><br>
-
+        
         <label for="telepon">Nomor Telepon:</label><br>
         <input type="number" id="telepon" name="telepon" required><br><br>
-
+        
         <label for="alamat">Alamat:</label><br>
-        <textarea id="alamat" name="alamat" rows="4" required></textarea><br><br>
-
+        <textarea id="alamat" name="alamat" rows="4"></textarea><br><br>
+        
         <label>Jenis Kelamin:</label><br>
-        <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
-        <label for="laki-laki">Laki-laki</label>
-        <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan" required>
-        <label for="perempuan">Perempuan</label><br><br>
-
+        <div class="radio-group">
+            <input type="radio" id="laki-laki" name="jenis_kelamin" value="Laki-laki" required>
+            <label for="laki-laki">Laki-laki</label>
+            <input type="radio" id="perempuan" name="jenis_kelamin" value="Perempuan">
+            <label for="perempuan">Perempuan</label>
+        </div>
+        <br>
+        
         <label for="tanggal_lahir">Tanggal Lahir:</label><br>
         <input type="date" id="tanggal_lahir" name="tanggal_lahir" required><br><br>
-
+        
         <label for="password">Buat Password:</label><br>
         <input type="password" id="password" name="password" required><br><br>
-
+        
         <label for="ulangi_password">Ulangi Password:</label><br>
         <input type="password" id="ulangi_password" name="ulangi_password" required><br><br>
-
-        <button type="submit">Submit</button>
+        
+        <button type="submit">Daftar</button>
     </form>
 
     <script>
-        document.getElementById('registrasiForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.getElementById('form-registrasi').addEventListener('submit', function (e) {
+            e.preventDefault();
 
             // Ambil data dari form
             const nama = document.getElementById('nama').value;
             const email = document.getElementById('email').value;
             const telepon = document.getElementById('telepon').value;
+            const alamat = document.getElementById('alamat').value;
             const jenisKelamin = document.querySelector('input[name="jenis_kelamin"]:checked').value;
+            const tanggalLahir = document.getElementById('tanggal_lahir').value;
+            const password = document.getElementById('password').value;
+            const ulangiPassword = document.getElementById('ulangi_password').value;
 
-            // Simpan data di localStorage
-            const anggota = JSON.parse(localStorage.getItem('anggota')) || [];
-            anggota.push({ nama, email, telepon, jenisKelamin });
-            localStorage.setItem('anggota', JSON.stringify(anggota));
+            // Validasi password
+            if (password !== ulangiPassword) {
+                alert('Password dan konfirmasi password tidak sesuai.');
+                return;
+            }
 
-            // Redirect ke halaman anggota.html
-            window.location.href = 'anggota.html';
+            // Simpan data ke localStorage
+            const anggotaBaru = {
+                nama,
+                email,
+                telepon,
+                alamat,
+                jenisKelamin,
+                tanggalLahir,
+            };
+            let dataAnggota = JSON.parse(localStorage.getItem('dataAnggota')) || [];
+            dataAnggota.push(anggotaBaru);
+            localStorage.setItem('dataAnggota', JSON.stringify(dataAnggota));
+
+            // Redirect ke halaman anggota
+            window.location.href = "anggota.html";
         });
     </script>
 </body>
 </html>
+
